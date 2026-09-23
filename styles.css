@@ -1,0 +1,260 @@
+/* General Body and Background Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* A more modern font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    margin: 0;
+    padding: 20px;
+    background-color: #f0f2f5; /* A light grey background */
+    background-image: url('https://img.freepik.com/premium-vector/futuristic-background-featuring-binary-code-forming-swirling-vortex_87621-3065.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    color: #333; /* Default text color */
+}
+
+/* Main Container Styles */
+.app-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95); /* Slightly transparent white for content */
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 650px; /* Increased max-width to accommodate calculator better */
+    margin: 40px auto 25px; /* Centered with top/bottom margin */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* More pronounced shadow */
+    text-align: center;
+    display: flex; /* Use flexbox for overall layout within container */
+    flex-direction: column; /* Stack sections vertically */
+    gap: 30px; /* Space between sections */
+}
+
+h1 {
+    color: #2c3e50; /* Darker blue for headings */
+    margin-bottom: 25px;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+/* Converter and Calculator Section Base Styles */
+.converter,
+.calculator {
+    margin-bottom: 0; /* Handled by container gap */
+    padding: 25px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Input, Select, and Button Common Styles */
+input[type="text"],
+select {
+    padding: 12px;
+    margin: 8px;
+    border: 1px solid #b0c4de; /* Light blue border */
+    border-radius: 6px;
+    font-size: 1em;
+    width: calc(100% - 16px); /* Full width minus margin */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+button {
+    padding: 12px 25px;
+    margin: 8px;
+    font-size: 1.05em;
+    background-color: #3498db; /* A vibrant blue */
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: auto; /* Allow button to size based on content */
+    display: inline-block; /* For proper margin/padding/width */
+}
+
+button:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+/* Result Box Styles */
+.result {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #e6f7ff; /* Light blue background for result */
+    border: 1px solid #a8d6f2; /* Matching border */
+    border-radius: 8px;
+    text-align: left;
+    font-size: 1.1em;
+    color: #2c3e50;
+    display: flex; /* Use flexbox to align image and text */
+    align-items: center; /* Vertically center image and text */
+    gap: 15px; /* Space between image and text */
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); /* Inner shadow for depth */
+    min-height: 80px; /* Ensure some height even if content is short */
+}
+
+/* Image in Result Box */
+.result-image {
+    width: 60px; /* Size of your icon */
+    height: 60px;
+    object-fit: contain; /* Ensures the image scales properly without cropping */
+    flex-shrink: 0; /* Prevents image from shrinking */
+    display: none; /* Hidden by default, shown by JS */
+}
+
+
+/* Calculator Specific Styles */
+.calculator .calc-input-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+.calculator .calc-input-group input,
+.calculator .calc-input-group select {
+    flex-grow: 1; /* Allow inputs/selects to grow */
+    margin: 5px; /* Adjust margin for group elements */
+    width: auto; /* Reset width to be controlled by flex-grow */
+}
+
+.calculator select#operation {
+    width: auto;
+    margin-bottom: 15px;
+    padding: 12px;
+    font-size: 1em;
+    border: 1px solid #b0c4de;
+    border-radius: 6px;
+}
+
+/* Separator line */
+hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+    margin: 40px 0;
+}
+
+/* Error Message Style */
+.error {
+    color: #e74c3c; /* Red for errors */
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+        margin: 30px auto;
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    input[type="text"],
+    select,
+    button {
+        font-size: 0.95em;
+        padding: 10px;
+        margin: 5px;
+    }
+
+    button {
+        width: 100%; /* Full width buttons on small screens */
+    }
+
+    .converter, .calculator {
+        padding: 15px;
+    }
+
+    .calculator .calc-input-group {
+        flex-direction: column; /* Stack inputs vertically on small screens */
+    }
+
+    .calculator .calc-input-group input,
+    .calculator .calc-input-group select {
+        width: calc(100% - 10px); /* Adjust width for stacked inputs */
+    }
+
+    .result {
+        flex-direction: column; /* Stack image and text vertically */
+        align-items: flex-start;
+    }
+
+    .result-image {
+        margin-bottom: 10px;
+    }
+}
+
+/* Footer */
+.site-footer {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto 30px;
+    padding: 20px;
+    text-align: center;
+    background: rgba(255,255,255,0.92);
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    color: #34495e;
+    box-sizing: border-box;
+}
+
+.site-footer strong {
+    font-size: 1.1rem;
+}
+
+.site-footer p {
+    margin: 8px 0;
+    font-size: 0.95rem;
+}
+
+.site-footer span {
+    color: #3498db;
+    font-weight: 700;
+}
+
+
+/* Modern footer improvements */
+.site-footer {
+    position: relative;
+    overflow: hidden;
+}
+
+.site-footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 20%;
+    right: 20%;
+    height: 3px;
+    background: #3498db;
+}
+
+.footer-tech {
+    opacity: .8;
+    font-size: .85rem !important;
+}
+
+@media (max-width:480px){
+    .site-footer {
+        width: calc(100% - 30px);
+    }
+}
